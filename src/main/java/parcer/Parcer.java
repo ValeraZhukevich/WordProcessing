@@ -2,6 +2,8 @@ package parcer;
 
 import edu.stanford.nlp.simple.Document;
 import model.*;
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -15,6 +17,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parcer {
+
+    private static final Logger log = Logger.getLogger(Parcer.class);
 
     TextUnit compositeText = new Text();
 
@@ -103,6 +107,7 @@ public class Parcer {
         try(BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("windows-1251"))){
             writer.write(compositeText.getText());
         }catch(IOException ex){
+            log.error(ex);
             ex.printStackTrace();
         }
     }
@@ -118,6 +123,7 @@ public class Parcer {
                 sb.append(System.getProperty("line.separator"));
             }
         }catch(IOException ex){
+            log.error(ex);
             ex.printStackTrace();
         }
         return sb.toString();
