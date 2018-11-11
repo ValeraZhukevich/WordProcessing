@@ -11,13 +11,6 @@ import java.util.Set;
 
 public class Controller {
 
-    public static void main(String[] args) {
-        Controller controller = new Controller("C:\\Users\\Valera\\IdeaProjects\\WordProcessing\\src\\test\\resources\\text.txt",
-                "C:\\Users\\Valera\\IdeaProjects\\WordProcessing\\src\\test\\resources\\words.txt");
-        controller.sordWordOccurrences();
-        controller.getWordOccurrences().stream().forEach(wordOccurrence -> System.out.println(wordOccurrence));
-    }
-
     TextUnit compositeText;
     List<WordOccurrence> wordOccurrences;
     Parcer parcer = new Parcer();
