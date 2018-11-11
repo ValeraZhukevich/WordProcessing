@@ -22,7 +22,6 @@ public class Paragraph implements TextUnit{
                 sb.append(" ");
             }
         }
-        sb.append(System.getProperty("line.separator"));
         return sb.toString();
     }
 
@@ -36,5 +35,25 @@ public class Paragraph implements TextUnit{
         List<TextUnit> words = new ArrayList<>();
         sentences.stream().forEach(sentence -> words.addAll(sentence.getWords()));
         return words;
+    }
+
+    @Override
+    public void clear() {
+        sentences.clear();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Paragraph)) return false;
+
+        Paragraph paragraph = (Paragraph) o;
+
+        return getSentences() != null ? getSentences().equals(paragraph.getSentences()) : paragraph.getSentences() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getSentences() != null ? getSentences().hashCode() : 0;
     }
 }

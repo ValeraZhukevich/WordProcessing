@@ -1,6 +1,5 @@
-package helpers;
+package model;
 
-import model.TextUnit;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -31,9 +30,9 @@ public class WordOccurrence implements Comparable<WordOccurrence>{
 
     @Override
     public int compareTo(@NotNull WordOccurrence o) {
-        int result = Double.compare(this.occurenceInText, o.getOccurenceInText());
+        int result = Double.compare(this.occurenceInText, o.getOccurenceInText()) * -1;
         if (result == 0){
-
+            return word.toString().compareTo(o.toString());
         }
         return result;
     }

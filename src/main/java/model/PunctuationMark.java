@@ -40,4 +40,26 @@ public class PunctuationMark implements TextUnit {
     public List<TextUnit> getSymbols() {
         return symbols;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PunctuationMark)) return false;
+
+        PunctuationMark that = (PunctuationMark) o;
+
+        if (afterWord != that.afterWord) return false;
+        return getSymbols() != null ? getSymbols().equals(that.getSymbols()) : that.getSymbols() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getSymbols() != null ? getSymbols().hashCode() : 0;
+        result = 31 * result + (afterWord ? 1 : 0);
+        return result;
+    }
+    @Override
+    public void clear() {
+        symbols.clear();
+    }
 }

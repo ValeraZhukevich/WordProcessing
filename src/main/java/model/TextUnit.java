@@ -12,4 +12,6 @@ public interface TextUnit {
 
     List<TextUnit> getWords();
 
+    void clear();
+
 }

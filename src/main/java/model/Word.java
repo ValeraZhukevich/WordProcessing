@@ -1,9 +1,11 @@
 package model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Word implements TextUnit {
+public class Word implements TextUnit{
 
     private List<TextUnit> symbols = new ArrayList<>();
     private boolean hasPunctuationMarkAfter;
@@ -39,6 +41,11 @@ public class Word implements TextUnit {
         return null;
     }
 
+    @Override
+    public void clear() {
+        symbols.clear();
+    }
+
     public List<TextUnit> getSymbols() {
         return symbols;
     }
@@ -62,4 +69,5 @@ public class Word implements TextUnit {
     public String toString() {
         return getText();
     }
+
 }

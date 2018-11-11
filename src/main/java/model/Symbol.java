@@ -29,6 +29,11 @@ public class Symbol implements TextUnit {
         return null;
     }
 
+    @Override
+    public void clear() {
+
+    }
+
     public char getSymbol() {
         return symbol;
     }

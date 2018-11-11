@@ -1,4 +1,4 @@
-package parcer;
+package controller.parcer;
 
 import edu.stanford.nlp.simple.Document;
 import model.*;
@@ -20,11 +20,12 @@ public class Parcer {
 
     private static final Logger log = Logger.getLogger(Parcer.class);
 
-    TextUnit compositeText = new Text();
+    private TextUnit compositeText = new Text();
 
     public TextUnit parceFile2TextUnit(String filePath){
 
         composeText(readFile(filePath));
+
         return compositeText;
     }
 
@@ -103,12 +104,11 @@ public class Parcer {
     public void write2File(String fileName){
 
         Path path = Paths.get(fileName);
-
         try(BufferedWriter writer = Files.newBufferedWriter(path, Charset.forName("windows-1251"))){
             writer.write(compositeText.getText());
         }catch(IOException ex){
             log.error(ex);
-            ex.printStackTrace();
+            System.out.println("Can't find a file with the name");
         }
     }
 
@@ -124,7 +124,7 @@ public class Parcer {
             }
         }catch(IOException ex){
             log.error(ex);
-            ex.printStackTrace();
+            System.out.println("Can't find a file with the name");
         }
         return sb.toString();
     }

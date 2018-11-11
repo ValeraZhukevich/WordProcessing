@@ -36,5 +36,23 @@ public class Sentence implements TextUnit{
         return words;
     }
 
+    @Override
+    public void clear() {
+        wordsAndPunctuationMarks.clear();
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Sentence)) return false;
+
+        Sentence sentence = (Sentence) o;
+
+        return wordsAndPunctuationMarks != null ? wordsAndPunctuationMarks.equals(sentence.wordsAndPunctuationMarks) : sentence.wordsAndPunctuationMarks == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return wordsAndPunctuationMarks != null ? wordsAndPunctuationMarks.hashCode() : 0;
+    }
 }
