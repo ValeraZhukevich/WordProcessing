@@ -18,7 +18,7 @@ public class Controller {
     public Controller(String textPath, String wordsPath) {
         wordOccurrences = new ArrayList<>();
         getComposeTextFromFile(textPath);
-        fillMap(wordsPath);
+        fillWordOccurrences(wordsPath);
     }
 
     public void getComposeTextFromFile(String textPath){
@@ -34,7 +34,7 @@ public class Controller {
         Collections.sort(wordOccurrences);
     }
 
-    public void fillMap(String wordsPath){
+    public void fillWordOccurrences(String wordsPath){
 
         Set<TextUnit> set = parcer.getListOfWords(wordsPath);
 
