@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Controller {
 
@@ -47,5 +48,14 @@ public class Controller {
                 }
             });
         }
+    }
+
+    public void filterWordPerOccurencies(int minOccurencies, int maxOccurencies){
+
+        sordWordOccurrences();
+        List<WordOccurrence> result = wordOccurrences.stream().filter(wordOccurrence ->
+            wordOccurrence.getOccurenceInText() >= minOccurencies && wordOccurrence.getOccurenceInText() <= maxOccurencies
+        ).collect(Collectors.toList());
+        result.stream().forEach(wordOccurrence -> System.out.println(wordOccurrence));
     }
 }

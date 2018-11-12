@@ -61,4 +61,9 @@ public class ControllerTest {
             }
         }
     }
+
+    @Test
+    public void testFilterWordPerOccurencies() {
+       controller.filterWordPerOccurencies(2,3);
+    }
 }
