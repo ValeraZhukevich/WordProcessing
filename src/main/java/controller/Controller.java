@@ -50,12 +50,12 @@ public class Controller {
         }
     }
 
-    public void filterWordPerOccurencies(int minOccurencies, int maxOccurencies){
+    public List<WordOccurrence> filterWordPerOccurencies(int minOccurencies, int maxOccurencies){
 
         sordWordOccurrences();
-        List<WordOccurrence> result = wordOccurrences.stream().filter(wordOccurrence ->
+        List<WordOccurrence> filteredList = wordOccurrences.stream().filter(wordOccurrence ->
             wordOccurrence.getOccurenceInText() >= minOccurencies && wordOccurrence.getOccurenceInText() <= maxOccurencies
         ).collect(Collectors.toList());
-        result.stream().forEach(wordOccurrence -> System.out.println(wordOccurrence));
+        return filteredList;
     }
 }

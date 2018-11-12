@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -62,8 +63,33 @@ public class ControllerTest {
         }
     }
 
-    @Test
-    public void testFilterWordPerOccurencies() {
-       controller.filterWordPerOccurencies(2,3);
+    @DataProvider
+    public Object[][] data1() {
+
+        List<String> firstList = new ArrayList<>();
+        firstList.add("leaders");
+        firstList.add("donald");
+        firstList.add("president");
+        firstList.add("duck");
+        firstList.add("world");
+
+        List<String> secondList = new ArrayList<>();
+        secondList.add("world");
+        secondList.add("french");
+        secondList.add("patriotism");
+        secondList.add("duck");
+        secondList.add("leaders");
+        secondList.add("donald");
+
+        return new Object[][] { { 2, 3, firstList}, {1, 2, secondList} };
+    }
+
+    @Test(dataProvider = "data1")
+    public void testFilterWordPerOccurencies(int minOcc, int maxOcc, List<String> expectedList) {
+
+       controller.filterWordPerOccurencies(minOcc,maxOcc).stream().forEach(wordOccurrence ->
+           Assert.assertTrue(expectedList.contains(wordOccurrence.getWord().getText().trim()))
+       );
+       Assert.assertEquals(expectedList.size(), controller.filterWordPerOccurencies(minOcc,maxOcc).size());
     }
 }
