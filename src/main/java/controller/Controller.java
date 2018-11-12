@@ -21,7 +21,7 @@ public class Controller {
         fillWordOccurrences(wordsPath);
     }
 
-    public void getComposeTextFromFile(String textPath){
+    private void getComposeTextFromFile(String textPath){
 
         compositeText = parcer.parceFile2TextUnit(textPath);
     }
@@ -34,7 +34,7 @@ public class Controller {
         Collections.sort(wordOccurrences);
     }
 
-    public void fillWordOccurrences(String wordsPath){
+    private void fillWordOccurrences(String wordsPath){
 
         Set<TextUnit> set = parcer.getListOfWords(wordsPath);
 

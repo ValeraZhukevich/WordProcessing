@@ -28,6 +28,10 @@ public class WordOccurrence implements Comparable<WordOccurrence>{
         return word;
     }
 
+    public List<Long> getOccurencesInSentences() {
+        return occurencesInSentences;
+    }
+
     @Override
     public int compareTo(@NotNull WordOccurrence o) {
         int result = Double.compare(this.occurenceInText, o.getOccurenceInText()) * -1;
